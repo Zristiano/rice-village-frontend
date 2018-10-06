@@ -1,0 +1,31 @@
+#followers{
+  margin-top: 20px;
+}
+#follower{
+  position: relative;
+  top: 40px;
+}
+.follower-name{
+  color: #000;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+#follower button{
+  border-radius: 5px;
+}
+
+#addFollower{
+  margin-top: 50px;
+  padding-bottom: 20px;
+}
+
+#addFollower button{
+  margin-left: 20px;
+  width: 100px;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: white;
+  background-color: #00ADEF;
+}

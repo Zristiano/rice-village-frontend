@@ -1,0 +1,18 @@
+<div *ngFor="let follower of followers; index as i">
+  <div id="followers" class="row">
+    <div  class="col-md-6">
+      <img src={{follower.avatar}} width="200px">
+    </div>
+    <div id="follower" class="col-md-6">
+      <p class="follower-name">{{follower.name}}</p>
+      <p class="follower-status">{{follower.status}}</p>
+      <button class="btn-default" (click)="unFollow(i)">unfollow</button>
+    </div>
+  </div>
+</div>
+
+<div id="addFollower" class="form-group">
+  <input #newFollower style="width: auto; display: inline" type="text" class="form-control" maxlength="20" size="40">
+  <button style="display: inline" (click)="add(newFollower.value)" class="btn-default">Add</button>
+</div>
+

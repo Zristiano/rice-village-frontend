@@ -1,0 +1,22 @@
+.topBar{
+  position: fixed;
+  background-color: #202020;
+  width: 100%;
+  top: 0;
+  height: 5em;
+  display: flex;
+  align-items: center;
+}
+
+.topBar span{
+  color: white;
+  font-size: 3em;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.registration-form{
+  position: relative;
+
+}

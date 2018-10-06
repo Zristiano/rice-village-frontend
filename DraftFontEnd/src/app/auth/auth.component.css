@@ -1,0 +1,27 @@
+tr .column0{
+  position: relative;
+  width: 50%;
+  border-radius: 20px;
+  border-width: 3px;
+  margin-right: 20px;
+  padding-top: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 60px;
+}
+
+tr .column1{
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  padding-top: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 70px;
+  font-size: 2em;
+}
+.table-content{
+  position: relative;
+  width: 100%;
+  top: 5em;
+}

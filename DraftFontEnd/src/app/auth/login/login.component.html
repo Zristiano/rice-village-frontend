@@ -1,0 +1,19 @@
+<p class="title-login" >
+  Login
+</p>
+
+<form #loginForm="ngForm" >
+  <div class="form-group">
+    <label>AccountName:</label>
+    <input #username="ngModel" name="phone" type="text" class="form-control" required ngModel>
+  </div>
+
+  <div class="form-group">
+    <label>Password:</label>
+    <input #passwrod="ngModel" name="psw" type="password" class="form-control" required ngModel>
+  </div>
+
+  <p>
+    <button (click)="formSubmit()" [disabled]="loginForm.form.invalid" class="form-submit">login</button>
+  </p>
+</form>

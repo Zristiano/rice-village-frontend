@@ -1,0 +1,21 @@
+.content{
+  position: relative;
+  top: 5em;
+}
+.users{
+  width: 25%;
+  padding-left: 1em;
+  padding-top: 1em;
+  background-color: darkgray;
+  border-width: 4px;
+}
+.app-headline{
+  margin-top: 10px;
+}
+.app-following{
+
+}
+.seperator{
+  background-color: green;
+  width: 100%;
+}
