@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6">
       <textarea #newPost rows="6" cols="50" class="writing-content" placeholder="Your post here"></textarea>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
       <a class="file">Add Image
-        <input type="file" name="" id="">
+        <input type="file">
       </a>
       <div>
         <button (click)="addPost(newPost.value)"  class="post btn-default">Post</button>
@@ -16,7 +16,7 @@
   <div class="row">
     <h5 class="page-header"></h5>
     <div class="form-group">
-      <input #searchInput class="search form-control" type="text" maxlength="70" size="80" placeholder="Search posts by content or author">
+      <input #searchInput class="search form-control" type="text" maxlength="50" size="60" placeholder="Search posts by content or author">
       <button (click)="search(searchInput.value)" class=" btn-search btn-default">Search</button>
     </div>
   </div>

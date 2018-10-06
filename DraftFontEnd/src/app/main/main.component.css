@@ -1,7 +1,7 @@
 .content{
   position: relative;
   top: 5em;
-  margin-left: 250px;
+  margin-left: 150px;
 }
 .users{
   padding-left: 1em;
@@ -23,5 +23,5 @@
 .div-posts{
   padding-top:100px ;
   background-color: darkgray;
-  margin-right: 250px;
+  margin-right: 10%;
 }
