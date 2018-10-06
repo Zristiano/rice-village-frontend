@@ -1,13 +1,23 @@
-<div class="content">
-  <div  class="users">
-    <a routerLink="/">Log Out</a>
-    <div class="app-headline">
-      <app-headline></app-headline>
+<div class="container-fluid">
+  <div class="content row">
+    <div  class="users col-lg-4">
+      <a routerLink="/">Log Out</a>
+      <span style="margin-left: 50px">
+        <a routerLink="/profile">Profile</a>
+      </span>
+
+      <div class="app-headline">
+        <app-headline></app-headline>
+      </div>
+      <h5 class="page-header"></h5>
+      <div class="app-following">
+        <app-following></app-following>
+      </div>
     </div>
-    <h5 class="page-header"></h5>
-    <div class="app-following">
-      <app-following></app-following>
+    <div class="col-lg-8">
+      <div style="padding-bottom: 30px" class="div-posts">
+        <app-posts></app-posts>
+      </div>
     </div>
   </div>
-  posts
 </div>

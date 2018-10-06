@@ -17,8 +17,8 @@ import { ProfileComponent } from './profile/profile.component';
 
 
 export const routes: Routes = [{path: '', component: AuthComponent, pathMatch: 'full'},
-  {path: 'main', component: MainComponent, pathMatch: 'full'}
-  /*{path: 'profile', component: ProfileComponent, pathMatch: 'full'}*/];
+  {path: 'main', component: MainComponent, pathMatch: 'full'},
+  {path: 'profile', component: ProfileComponent, pathMatch: 'full'}];
 
 @NgModule({
   declarations: [

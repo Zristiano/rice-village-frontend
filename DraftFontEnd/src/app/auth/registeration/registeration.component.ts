@@ -8,12 +8,18 @@ import {Router} from '@angular/router';
   styleUrls: ['./registeration.component.css']
 })
 export class RegisterationComponent implements OnInit {
-  userModel = new User('Zristiano',"yz143@gmail.com",123456789,'124',1244);
-  public userName;
-
+  public birthday;
   constructor(private router:Router) { }
 
   ngOnInit() {
+  }
+
+  isChild()
+  {
+    let birth = new Date(this.birthday).getTime();
+    let today = new Date(Date.now()).getTime();
+    let d = today-birth;
+    return d<567993600000;
   }
 
   formSubmit(){

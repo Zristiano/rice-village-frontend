@@ -1,9 +1,9 @@
 .content{
   position: relative;
   top: 5em;
+  margin-left: 250px;
 }
 .users{
-  width: 25%;
   padding-left: 1em;
   padding-top: 1em;
   background-color: darkgray;
@@ -18,4 +18,10 @@
 .seperator{
   background-color: green;
   width: 100%;
+}
+
+.div-posts{
+  padding-top:100px ;
+  background-color: darkgray;
+  margin-right: 250px;
 }

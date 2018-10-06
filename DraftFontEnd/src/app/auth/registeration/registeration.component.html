@@ -40,8 +40,14 @@
     <p class="alert" *ngIf="zip.touched && zip.errors"> Zip code must be a number with 5 digit length </p>
   </div>
 
+  <div class="form-group">
+    <label>BirthDay:</label>
+    <input #birthDay="ngModel" name="birthday" type="date" class="form-control" required [(ngModel)]="birthday">
+    <p class="alert" *ngIf="birthDay.touched && isChild()"> Only individuals 18 years of age or older on the day of registration are allowed to register </p>
+  </div>
+
   <p>
-    <button (click)="formSubmit()" [disabled]="registerForm.form.invalid" class="form-submit">submit</button>
+    <button (click)="formSubmit()" [disabled]="registerForm.form.invalid || isChild()" class="form-submit">submit</button>
   </p>
 </form>
 

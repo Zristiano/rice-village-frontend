@@ -1,3 +1,76 @@
-<p>
-  profile works!
-</p>
+<div style="margin-top: 6em" class="container">
+  <div style="text-align: center" class="row">
+    <span style="font-size: 2em"><a routerLink="/main">Main Page</a></span>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div style="text-align: center">
+        <p>
+          <img src="http://www.soccerinfomania.com/wp-content/uploads/2017/03/cirstiano-ronaldo-sculpture-320x320.jpg" width="200px">
+        </p>
+        <a class="file">Upload new picture
+          <input type="file" >
+        </a>
+      </div>
+
+      <div style="border: 2px solid #505050; margin-top: 20px">
+        <span class="info-title" >Current Info</span><br>
+        <div style="text-align: center">
+          <p class="info">Name: {{profile.accountName}}</p>
+          <p class="info">email: {{profile.emailAddr}}</p>
+          <p class="info">phone: {{profile.phoneNum}}</p>
+          <p class="info">zip: {{profile.zipCod}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div style="border: 2px solid #505050; margin-top: 20px; padding:10px 20px">
+        <span class="info-title">Update Info</span>
+        <form #registerForm="ngForm" >
+          <div class="form-group">
+            <label>Account Name:</label>
+            <input #account="ngModel" name="account" type="text" class="form-control"
+                   pattern="[(a-z)(A-Z)][(a-z)(A-Z)(0-9)]*" ngModel >
+            <p class="alert" *ngIf="account.errors && account.touched && account.value.trim().length!=0"> Account name can only be upper or lower case letter and number, but it cannot start with a number </p>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address:</label>
+            <input #email="ngModel" name="email" type="text" class="form-control"
+                   pattern="[\w\.\-]+@\w+\.[a-zA-Z]+" ngModel>
+            <p class="alert" *ngIf="email.errors && email.touched && email.value.trim().length!=0"> email format must be valid </p>
+          </div>
+
+          <div class="form-group">
+            <label>Phone Number:</label>
+            <input #phone="ngModel" name="phone" type="text" class="form-control"
+                   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" ngModel>
+            <p class="alert" *ngIf="phone.errors && phone.touched && phone.value.trim().length!=0"> phone number format must be xxx-xxx-xxxx </p>
+          </div>
+
+          <div class="form-group">
+            <label>Zip Code:</label>
+            <input #zipcode="ngModel" name="zipcode" type="number" class="form-control" pattern="[0-9]{5}" ngModel>
+            <p class="alert" *ngIf="zipcode.touched && zipcode.errors && zipcode.value.trim().length!=0"> Zip code must be a number with 5 digit length </p>
+          </div>
+
+          <div class="form-group">
+            <label>Password:</label>
+            <input #passwrod="ngModel" name="psw" type="password" class="form-control" ngModel>
+          </div>
+
+          <div *ngIf="passwrod.touched && passwrod.value.trim().length!=0" class="form-group">
+            <label>Confirm Password:</label>
+            <input #confirmPsw="ngModel" name="confirmpsw" type="password" class="form-control"  ngModel>
+            <p class="alert" *ngIf="passwrod.value!=confirmPsw.value && passwrod.touched && confirmPsw.touched"> password must be the same </p>
+          </div>
+
+          <p>
+            <button (click)="update(registerForm)" [disabled]="registerForm.form.invalid" class="form-submit">Update Info</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
