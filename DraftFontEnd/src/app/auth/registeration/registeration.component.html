@@ -1,7 +1,7 @@
 <p class="title-registration" >
   Registration
 </p>
-<form #registerForm="ngForm" >
+<form #registerForm="ngForm" *ngIf="!registerSuc()" (ngSubmit)="regSubmit(registerForm)">
   <div class="form-group">
     <label>Account Name:</label>
     <input #account="ngModel" name="account" type="text" class="form-control"
@@ -47,7 +47,11 @@
   </div>
 
   <p>
-    <button (click)="formSubmit()" [disabled]="registerForm.form.invalid || isChild()" class="form-submit">submit</button>
+    <button type="submit" (click)="formSubmit()" [disabled]="registerForm.form.invalid || isChild() || passwrod.value!=confirmPsw.value" class="form-submit">submit</button>
   </p>
 </form>
+
+<div class="alert alert-success" *ngIf="registerSuc()">
+  Well done! You successfully register.
+</div>
 

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../../user';
-import {Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-registeration',
@@ -8,10 +7,13 @@ import {Router} from '@angular/router';
   styleUrls: ['./registeration.component.css']
 })
 export class RegisterationComponent implements OnInit {
+
   public birthday;
-  constructor(private router:Router) { }
+  isRegisterSuc:boolean;
+  constructor() { }
 
   ngOnInit() {
+    this.isRegisterSuc = false;
   }
 
   isChild()
@@ -23,7 +25,21 @@ export class RegisterationComponent implements OnInit {
   }
 
   formSubmit(){
-    this.router.navigate(['../main']);
+    this.isRegisterSuc = true;
+    setTimeout(()=>this.isRegisterSuc = false,4000);
+    // this.router.navigate(['../main']);
   }
+
+  registerSuc(){
+    return this.isRegisterSuc;
+  }
+
+  regSubmit(form:NgForm){
+    // this.app.registerUser(form.value.account,form.value.email,form.value.phone,form.value.birthday,form.value.zipcode,form.value.password)
+    // if(this.app.login(form.value.account,form.value.password)){
+    //   this.router.navigate(['../main']);
+    // }
+  }
+
 
 }

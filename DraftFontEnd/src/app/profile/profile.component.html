@@ -7,7 +7,7 @@
     <div class="col-lg-6">
       <div style="text-align: center">
         <p>
-          <img src="http://www.soccerinfomania.com/wp-content/uploads/2017/03/cirstiano-ronaldo-sculpture-320x320.jpg" width="200px">
+          <img src={{profile.avatar}} width="150px">
         </p>
         <a class="file">Upload new picture
           <input type="file" >
@@ -18,9 +18,11 @@
         <span class="info-title" >Current Info</span><br>
         <div style="text-align: center">
           <p class="info">Name: {{profile.accountName}}</p>
+          <p class="info">netId: {{profile.netId}}</p>
           <p class="info">email: {{profile.emailAddr}}</p>
           <p class="info">phone: {{profile.phoneNum}}</p>
           <p class="info">zip: {{profile.zipCod}}</p>
+          <p class="info">birthday: {{profile.birthDay}}</p>
         </div>
       </div>
     </div>

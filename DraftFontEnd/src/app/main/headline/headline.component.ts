@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HeadlineService} from './headline.service';
 
 @Component({
   selector: 'app-headline',
@@ -7,18 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeadlineComponent implements OnInit {
 
-  public status;
+  public user:any;
 
-  constructor() {
+  constructor(private headlineService: HeadlineService) {
   }
 
   ngOnInit() {
-    this.status = 'hello, world!';
+    this.user = this.headlineService.getLoggedUserInfo();
   }
 
-  updateStatus(newStatus){
+  updateStatus(newStatus:string){
     if (newStatus.trim().length!=0){
-      this.status = newStatus;
+      this.user = this.headlineService.updateUserStatus(newStatus);
     }
   }
 

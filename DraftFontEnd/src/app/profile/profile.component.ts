@@ -14,22 +14,11 @@ export class ProfileComponent implements OnInit {
   constructor(private profileService:ProfileService) { }
 
   ngOnInit() {
-    this.profileService.getProfile((data)=>this.profile = data);
+    this.profile = this.profileService.getProfile();
   }
 
   update(form:NgForm){
-    if (form.value.account.length!=0){
-      this.profile.accountName = form.value.account;
-    }
-    if (form.value.email.length!=0){
-      this.profile.emailAddr = form.value.email;
-    }
-    if (form.value.phone.length!=0){
-      this.profile.phoneNum = form.value.phone;
-    }
-    if (form.value.zipcode.length!=0){
-      this.profile.zipCod = form.value.zipcode;
-    }
+    this.profile = this.profileService.update(form.value.account,form.value.email,form.value.phone,form.value.zipcode);
   }
 
 

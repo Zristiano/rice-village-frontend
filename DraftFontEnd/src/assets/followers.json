@@ -1,6 +1,27 @@
 [
-  {"id":0,"name":"Andrew","status":"I am Andrew","avatar":"https://pic.qqtn.com/up/2016-10/14762726301049405.jpg"},
-  {"id":1,"name":"Brandon","status":"I am Brandon","avatar":"http://www.gx8899.com/uploads/allimg/2018042010/enei40gszt1.jpg"},
-  {"id":2,"name":"Christina","status":"I am Christina","avatar":"http://m.xz7.com/up/2017-11/20171116111437764860.jpg"},
-  {"id":3,"name":"Elena","status":"I am Elena","avatar":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu7kUvBKoH0lk5Uut_eWG78u4W2NA0Eh2uWhOw1FGMbGhjr_TW"}
+  {
+    "id":1,
+    "following":[
+      {"id":2},
+      {"id":4}]
+  },
+  {
+    "id":2,
+    "following":[
+      {"id":1},
+      {"id":4}]
+  },
+  {
+    "id":3,
+    "following":[
+      {"id":1},
+      {"id":2}]
+  },
+  {
+    "id":4,
+    "following":[
+      {"id":1},
+      {"id":2},
+      {"id":3}]
+  }
 ]

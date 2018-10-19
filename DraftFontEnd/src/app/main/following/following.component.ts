@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FollowingService} from './following.service';
+import {PostsService} from '../posts/posts.service';
 
 @Component({
   selector: 'app-following',
@@ -8,30 +9,58 @@ import {FollowingService} from './following.service';
 })
 export class FollowingComponent implements OnInit {
 
-  private newImg;
+  public followers:Array<any>;
 
-  public followers;
+  public followFail:boolean;
 
-  constructor(private followinService:FollowingService) { }
+  public warningMsg:string;
+
+  private timeoutId;
+
+  constructor(private followinService:FollowingService, private postsService:PostsService) { }
 
   ngOnInit() {
-    this.newImg="http://pic.qiantucdn.com/58pic/12/25/72/49i58PICNrv.jpg!qt324";
-    this.followinService.getFollowers().subscribe(data=>{this.followers = data});
+    this.followFail = false;
+    this.followinService.getFollowers().then((resp:any)=>{
+      if (resp.errorCode===0){
+        this.followers = resp.followingUsers;
+        this.postsService.setFollowers(this.followers);
+      }
+    });
   }
 
-  add(newUser){
-    if (newUser.trim().length!=0){
-      let index = this.followers.length;
-      this.followers[index] = {
-        "id":index,
-        "name":newUser,
-        "status":"I am "+ newUser,
-        "avatar": this.newImg
-      };
+
+  follow(newUser:string){
+    let curUser = JSON.parse(localStorage.getItem("curUser"));
+    if (curUser.accountName === newUser){
+      this.showAddUserErrorMsg("You cannot follow yourself");
+      return;
+    }
+    for (let follower of this.followers){
+      if (follower.accountName===newUser){
+        this.showAddUserErrorMsg("You have already followed the user");
+        return;
+      }
+    }
+
+    let resp =  this.followinService.follow(newUser);
+    if (resp.errorCode===0){
+      this.followers = resp.followingUsers;
+      this.postsService.setFollowers(this.followers);
+    } else {
+      this.showAddUserErrorMsg(resp.errorMsg);
     }
   }
 
-  unFollow(idx){
-    this.followers.splice(idx,1);
+  private showAddUserErrorMsg(msg:string ){
+    clearTimeout(this.timeoutId);
+    this.followFail = true;
+    this.warningMsg = msg;
+    this.timeoutId = setTimeout(()=>this.followFail= false,3000);
+  }
+
+  unFollow(id:number){
+    this.followers = this.followinService.unFollow(id);
+    this.postsService.setFollowers(this.followers);
   }
 }

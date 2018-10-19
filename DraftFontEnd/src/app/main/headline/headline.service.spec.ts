@@ -1,12 +1,12 @@
 // import { TestBed } from '@angular/core/testing';
 //
-// import { FollowingService } from './following.service';
+// import { HeadlineService } from './headline.service';
 //
-// describe('FollowingService', () => {
+// describe('HeadlineService', () => {
 //   beforeEach(() => TestBed.configureTestingModule({}));
 //
 //   it('should be created', () => {
-//     const service: FollowingService = TestBed.get(FollowingService);
+//     const service: HeadlineService = TestBed.get(HeadlineService);
 //     expect(service).toBeTruthy();
 //   });
 // });
