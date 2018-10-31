@@ -9,7 +9,6 @@
 /node_modules
 
 # IDEs and editors
-/.idea
 .project
 .classpath
 .c9/
@@ -34,25 +33,5 @@ testem.log
 /typings
 
 # System Files
-.DS_Store
-Thumbs.db
-/dist
-/e2e
-/node_modules
-/src/environments
-/src/browserslist
-/src/favicon.ico
-/src/karma.conf.js
-/src/polyfills.ts
-/src/test.ts
-/src/tsconfig.app.json
-/src/tsconfig.spec.json
-/src/tslint.json
-/src/assets/.gitkeep
-.editorconfig
-src.rar
-package-lock.json
-README.md
-tslint.json
-tsconfig.json
 
+/junit
