@@ -91,7 +91,7 @@ describe('PostsComponent', () => {
     },3000);
   });
 
-  it('should update the search keyword', function () {
+  it('should updateProfile the search keyword', function () {
     let keyWord = "hello";
     postsComponent.search(keyWord);
     expect(postsComponent.keyWord).toBe(keyWord);

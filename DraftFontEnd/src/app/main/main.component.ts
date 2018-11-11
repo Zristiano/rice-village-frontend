@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {MainService} from './main.service';
 import {main} from '@angular/compiler-cli/src/main';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -10,7 +11,7 @@ import {main} from '@angular/compiler-cli/src/main';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private mainService : MainService ) { }
+  constructor(private mainService : MainService, private route:Router) { }
 
   ngOnInit() {
     // this.mainService.getUserProfile(result=>{
@@ -20,6 +21,6 @@ export class MainComponent implements OnInit {
 
 
   logout(){
-    localStorage.clear();
+    this.mainService.logout();
   }
 }
