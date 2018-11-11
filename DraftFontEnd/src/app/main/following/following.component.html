@@ -4,9 +4,9 @@
       <img src={{follower.avatar}} width="200px">
     </div>
     <div id="follower" class="col-md-6">
-      <p class="follower-name">{{follower.accountName}}</p>
-      <p class="follower-status">{{follower.status}}</p>
-      <button class="btn-default" (click)="unFollow(follower.id)">unfollow</button>
+      <p class="follower-name">{{follower.username}}</p>
+      <p class="follower-status">{{follower.headline}}</p>
+      <button class="btn-default" (click)="unFollow(follower.userId)">unfollow</button>
     </div>
   </div>
 </div>

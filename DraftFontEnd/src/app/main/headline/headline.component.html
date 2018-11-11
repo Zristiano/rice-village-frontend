@@ -1,12 +1,12 @@
 <div class="row">
   <div  class="col-md-6">
     <img src={{user.avatar}} width="200px">
-    <p class="username">{{user.accountName}}</p>
+    <p class="username">{{user.username}}</p>
   </div>
   <div id="status" class="col-md-6">
     Share Your Status:
     <br>
-    <span>{{user.status}}</span>
+    <span>{{user.headline}}</span>
     <div class="form-group">
       <input #newStatus style="width: auto; display: inline" placeholder="say something" type="text" class="form-control" maxlength="15" size="15">
       <button style="display: inline" (click)="updateStatus(newStatus.value)" class="btn-default">update</button>

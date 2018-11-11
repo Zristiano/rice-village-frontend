@@ -17,13 +17,13 @@ export class FollowingComponent implements OnInit {
 
   private timeoutId;
 
-  constructor(private followinService:FollowingService, private postsService:PostsService) { }
+  constructor(private followingService:FollowingService, private postsService:PostsService) { }
 
   ngOnInit() {
     this.followFail = false;
-    this.followinService.getFollowers().then((resp:any)=>{
+    this.followingService.getFollowers().then((resp:any)=>{
       if (resp.errorCode===0){
-        this.followers = resp.followingUsers;
+        this.followers = resp.result;
         this.postsService.setFollowers(this.followers);
       }
     });
@@ -31,25 +31,14 @@ export class FollowingComponent implements OnInit {
 
 
   follow(newUser:string){
-    let curUser = JSON.parse(localStorage.getItem("curUser"));
-    if (curUser.accountName === newUser){
-      this.showAddUserErrorMsg("You cannot follow yourself");
-      return;
-    }
-    for (let follower of this.followers){
-      if (follower.accountName===newUser){
-        this.showAddUserErrorMsg("You have already followed the user");
+    this.followingService.follow(newUser).then((res:any)=>{
+      if (res.errorCode!=0){
+        this.showAddUserErrorMsg(res.message);
         return;
       }
-    }
-
-    let resp =  this.followinService.follow(newUser);
-    if (resp.errorCode===0){
-      this.followers = resp.followingUsers;
+      this.followers = res.result.following;
       this.postsService.setFollowers(this.followers);
-    } else {
-      this.showAddUserErrorMsg(resp.errorMsg);
-    }
+    });
   }
 
   private showAddUserErrorMsg(msg:string ){
@@ -60,7 +49,11 @@ export class FollowingComponent implements OnInit {
   }
 
   unFollow(id:number){
-    this.followers = this.followinService.unFollow(id);
-    this.postsService.setFollowers(this.followers);
+    this.followingService.unFollow(id).then((res:any)=>{
+      if (res.errorCode===0){
+        this.followers = res.result.following;
+        this.postsService.setFollowers(this.followers);
+      }
+    });
   }
 }

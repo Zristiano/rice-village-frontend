@@ -14,12 +14,18 @@ export class HeadlineComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.headlineService.getLoggedUserInfo();
+    this.headlineService.getUserProfile().then((res:any)=>{
+      this.user = res;
+    });
   }
 
   updateStatus(newStatus:string){
     if (newStatus.trim().length!=0){
-      this.user = this.headlineService.updateUserStatus(newStatus);
+      this.headlineService.updateUserStatus(newStatus).then((res:any)=>{
+        if (res.errorCode===0){
+          this.user.headline = res.result.headline;
+        }
+      });
     }
   }
 

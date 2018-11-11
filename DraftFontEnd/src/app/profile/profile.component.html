@@ -29,7 +29,7 @@
     <div class="col-lg-6">
       <div style="border: 2px solid #505050; margin-top: 20px; padding:10px 20px">
         <span class="info-title">Update Info</span>
-        <form #registerForm="ngForm" >
+        <form #profileForm="ngForm" >
           <div class="form-group">
             <label>Account Name:</label>
             <input #account="ngModel" name="account" type="text" class="form-control"
@@ -69,7 +69,7 @@
           </div>
 
           <p>
-            <button (click)="update(registerForm)" [disabled]="registerForm.form.invalid" class="form-submit">Update Info</button>
+            <button (click)="update(profileForm)" [disabled]="profileForm.form.invalid" class="form-submit">Update Info</button>
           </p>
         </form>
       </div>

@@ -18,7 +18,10 @@ export class PostsComponent implements OnInit {
   constructor(private postService:PostsService) {}
 
   ngOnInit() {
-    this.postService.setArticlesCallBack((articles)=>{this.articles = articles; console.log("articles->"+JSON.stringify(articles))});
+    this.postService.setArticlesCallBack((articles)=>{
+      this.articles = articles;
+      // console.log("articles->"+JSON.stringify(articles))
+    });
   }
 
   search(content){
@@ -31,8 +34,7 @@ export class PostsComponent implements OnInit {
     if (content.trim().length===0){
       return;
     }
-    this.articles = this.postService.addContent(content);
-    this.showComments.splice(0,0,false);
+    return this.postService.addContent(content);
   }
 
   showHideComments(idx:number){

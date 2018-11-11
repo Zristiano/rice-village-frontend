@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         return Promise.resolve(data);
       } else {
         this.loginStateFail = true;
-        this.errorMsg = data.errorMsg;
+        this.errorMsg = data.message;
         setTimeout(()=>this.loginStateFail =false,3000);
         return Promise.resolve(data);
       }

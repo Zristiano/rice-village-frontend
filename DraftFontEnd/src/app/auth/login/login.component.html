@@ -4,13 +4,13 @@
 
 <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" *ngIf="!loginStateFail && !loginStateSuc">
   <div class="form-group">
-    <label>NetId:</label>
+    <label>Username:</label>
     <input #username="ngModel" name="netId" type="text" class="form-control" required ngModel>
   </div>
 
   <div class="form-group">
     <label>Password:</label>
-    <input #passwrod="ngModel" name="psw" type="password" class="form-control" required ngModel>
+    <input #password="ngModel" name="psw" type="password" class="form-control" required ngModel>
   </div>
 
   <p>

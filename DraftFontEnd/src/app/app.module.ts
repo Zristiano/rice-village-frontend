@@ -30,7 +30,7 @@ export const routes: Routes = [{path: '', component: AuthComponent, pathMatch: '
     HeadlineComponent,
     FollowingComponent,
     PostsComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

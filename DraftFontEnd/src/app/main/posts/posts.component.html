@@ -29,15 +29,15 @@
         <p class="post-content">
           {{article.content}}
         </p>
-        <span style="text-align: left">Author:{{article.author}}</span>
+        <span style="text-align: left">Author:{{article.author.username}}</span>
         <span style="float: right; font-style: italic">{{article.date}}</span>
         <p style="text-align: center">
           <button class="post-btn">Edit</button> <button class="post-btn" (click)="showHideComments(i)">comments</button>
         </p>
         <div *ngIf="showComments[i]">
-          <div *ngFor="let comment of article.comment">
+          <div *ngFor="let comment of article.comments">
             <div>
-              <span style="font-weight: bold; color: #000000; width: 80px; display: inline-block">{{comment.accountName}}: </span>
+              <span style="font-weight: bold; color: #000000; width: 80px; display: inline-block">{{comment.author.username}}: </span>
               <span > {{comment.content}}</span>
             </div>
           </div>

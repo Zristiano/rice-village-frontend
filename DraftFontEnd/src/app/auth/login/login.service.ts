@@ -1,14 +1,25 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Url} from '../../Url';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private url:Url) { }
 
   doLogin(netId:string,psw:string){
+
+    return this.http.post(this.url.Login,{'username':netId,'password':psw},{withCredentials:true}).toPromise().then((result:any) => {
+      return Promise.resolve(result);
+    }).catch((reason:any)=>{
+      let result = {"errorCode":100, "message":"request fail"};
+      console.log("http login catch :"+JSON.stringify(reason));
+      return Promise.resolve(result);
+    });
+
+    /**
     return this.http.get("assets/profile.json").toPromise().then((users:any) => {
        for (let i=0; i<users.length; i++){
          if (users[i].netId===netId ){
@@ -23,5 +34,7 @@ export class LoginService {
        }
        return Promise.resolve({"errorCode":2,"errorMsg":"Non-existent User"});
     });
+  */
   }
+
 }
