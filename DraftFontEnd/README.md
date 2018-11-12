@@ -27,7 +27,7 @@ con:cannot post text-only post and no restriction in profile editing form
 
 use a slip day
 
-front-url : rice-village-yuanmengzeng.surge.sh
+front-url : http://rice-village-yuanmengzeng.surge.sh
 backend-url: https://ricebookserver-yuanmengzeng.herokuapp.com
 
 test user:
