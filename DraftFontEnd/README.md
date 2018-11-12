@@ -1,27 +1,25 @@
-# DraftFontEnd
+Review 
+(1)
+line:https://jw104_hw5.surge.sh (jing, b-b-b)
+pro:beautiful ui and clear interface
+con:UI is not friendly
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
+(2)line:https://frontend-lwq.surge.sh (ji55, 123123)
+pro:can post text-only post
+con:too many buttons
 
-## Development server
+(3)
+line:https://frontend-lu.surge.sh (aj1, 12345)
+pro:good web design
+con:editing profile did not work
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+(4)
+line:http://hw5-jh96.surge.sh (tw95, 123)
+pro: clear framework
+con: comment can't display well
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+(5)
+link：http://newfront.surge.sh (yc96, 123123)
+pro：good colorful button
+con:cannot post text-only post and no restriction in profile editing form
