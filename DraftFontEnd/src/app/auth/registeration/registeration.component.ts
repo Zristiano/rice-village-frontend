@@ -26,7 +26,7 @@ export class RegisterationComponent implements OnInit {
     let birth = new Date(this.birthday).getTime();
     let today = new Date(Date.now()).getTime();
     let d = today-birth;
-    console.log('birth tt->'+birth);
+    console.log('birthday tt->'+this.birthday);
     // if (true){
     //   return false;
     // }

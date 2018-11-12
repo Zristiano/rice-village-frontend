@@ -5,16 +5,16 @@
 <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" *ngIf="!loginStateFail && !loginStateSuc">
   <div class="form-group">
     <label>Username:</label>
-    <input #username="ngModel" name="netId" type="text" class="form-control" required ngModel>
+    <input #username="ngModel" name="username" type="text" class="form-control" required ngModel>
   </div>
 
   <div class="form-group">
     <label>Password:</label>
-    <input #password="ngModel" name="psw" type="password" class="form-control" required ngModel>
+    <input #password="ngModel" name="password" type="password" class="form-control" required ngModel>
   </div>
 
   <p>
-    <button type="submit" [disabled]="loginForm.form.invalid" class="form-submit">login</button>
+    <button id="loginSubmit" type="submit" [disabled]="loginForm.form.invalid" class="form-submit">login</button>
   </p>
 </form>
 

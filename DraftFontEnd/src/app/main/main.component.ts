@@ -22,5 +22,6 @@ export class MainComponent implements OnInit {
 
   logout(){
     this.mainService.logout();
+    // this.route.navigate(['../'])
   }
 }

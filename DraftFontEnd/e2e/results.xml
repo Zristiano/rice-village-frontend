@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="8" time="7.819">
+ <testsuite name="workspace-project App" timestamp="2018-11-11T23:13:57" hostname="localhost" time="7.819" errors="0" tests="8" skipped="0" disabled="0" failures="0">
+  <testcase classname="workspace-project App" name="should register a new user" time="2.632" />
+  <testcase classname="workspace-project App" name="log in as test user " time="1.7" />
+  <testcase classname="workspace-project App" name="Create new article and validate article appears in feed " time="0.794" />
+  <testcase classname="workspace-project App" name="Update headline headline and verify change " time="0.391" />
+  <testcase classname="workspace-project App" name="log out new user " time="0.119" />
+  <testcase classname="workspace-project App" name="log in test user " time="1.502" />
+  <testcase classname="workspace-project App" name="Search for a keyword that matches only one of test user&apos;s articles and verify only one article shows, and verify the author" time="0.678" />
+  <testcase classname="workspace-project App" name="log out test user " time="0.002" />
+ </testsuite>
+</testsuites>

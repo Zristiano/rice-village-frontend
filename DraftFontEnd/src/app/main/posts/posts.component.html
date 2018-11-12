@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <textarea #newPost rows="6" cols="50" class="writing-content" placeholder="Your post here"></textarea>
+      <textarea id="postTextArea" #newPost rows="6" cols="50" class="writing-content" placeholder="Your post here"></textarea>
     </div>
     <div class="col-md-6">
       <a class="file">Add Image
         <input type="file">
       </a>
       <div>
-        <button (click)="addPost(newPost.value)"  class="post btn-default">Post</button>
+        <button id="postNewArticle" (click)="addPost(newPost.value)"  class="post btn-default">Post</button>
       </div>
       <button (click)="newPost.value=''" class="cancel btn-default">Cancel</button>
     </div>
@@ -16,20 +16,20 @@
   <div class="row">
     <h5 class="page-header"></h5>
     <div class="form-group">
-      <input #searchInput class="search form-control" type="text" maxlength="50" size="60" placeholder="Search posts by content or author">
-      <button (click)="search(searchInput.value)" class=" btn-search btn-default">Search</button>
+      <input id="searchInputContent" #searchInput class="search form-control" type="text" maxlength="50" size="60" placeholder="Search posts by content or author">
+      <button id="searchButton" (click)="search(searchInput.value)" class=" btn-search btn-default">Search</button>
     </div>
   </div>
   <div class="row">
-    <div *ngFor="let article of articles,index as i">
+    <div id="articleContainer" *ngFor="let article of articles,index as i">
       <div class="post-container">
         <div *ngIf="article.image.length!=0" style="text-align: center">
           <img src="{{article.image}}" width="400px" height="200px" >
         </div>
-        <p class="post-content">
+        <p id="articleContent" class="post-content">
           {{article.content}}
         </p>
-        <span style="text-align: left">Author:{{article.author.username}}</span>
+        <span id="articleAuthor" style="text-align: left">Author:{{article.author.username}}</span>
         <span style="float: right; font-style: italic">{{article.date}}</span>
         <p style="text-align: center">
           <button class="post-btn">Edit</button> <button class="post-btn" (click)="showHideComments(i)">comments</button>

@@ -30,16 +30,11 @@ export class ProfileComponent implements OnInit {
           const birthday = new Date(result.result.dob);
           result.result.birthday = `${birthday.getMonth()+1}/${birthday.getDay()}/${birthday.getFullYear()}`;
           this.profile = result.result;
-          form.value.email ='';
-          form.value.phone ='';
-          form.value.zipcode ='';
         }
       });
     }
     if (form.value.psw || form.value.psw===form.value.confirmpsw) {
       this.profileService.updatePassword(form.value.psw).then(result=>{
-        form.value.psw ='';
-        form.value.confirmpsw ='';
       });
     }
 

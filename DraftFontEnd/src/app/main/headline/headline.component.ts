@@ -14,6 +14,11 @@ export class HeadlineComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user={
+      avatar:"http://www.ejdyin.com/data/img/article/2016081514365489415955.jpg",
+      username:"test user",
+      headline:""
+    };
     this.headlineService.getUserProfile().then((res:any)=>{
       this.user = res;
     });
@@ -21,7 +26,7 @@ export class HeadlineComponent implements OnInit {
 
   updateStatus(newStatus:string){
     if (newStatus.trim().length!=0){
-      this.headlineService.updateUserStatus(newStatus).then((res:any)=>{
+      return this.headlineService.updateUserStatus(newStatus).then((res:any)=>{
         if (res.errorCode===0){
           this.user.headline = res.result.headline;
         }

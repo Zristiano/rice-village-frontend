@@ -47,11 +47,11 @@
   </div>
 
   <p>
-    <button type="submit"  [disabled]="registerForm.form.invalid || isChild() || passwrod.value!=confirmPsw.value" class="form-submit">submit</button>
+    <button id="registerSubmit" type="submit"  [disabled]="registerForm.form.invalid || isChild() || passwrod.value!=confirmPsw.value" class="form-submit">submit</button>
   </p>
 </form>
 
-<div class="alert alert-success" *ngIf="registerSuc()">
+<div id="registerSuccessMsg" class="alert alert-success" *ngIf="registerSuc()">
   Well done! You successfully register.
 </div>
 

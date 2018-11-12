@@ -6,10 +6,10 @@
   <div id="status" class="col-md-6">
     Share Your Status:
     <br>
-    <span>{{user.headline}}</span>
+    <span id="headline">{{user.headline}}</span>
     <div class="form-group">
-      <input #newStatus style="width: auto; display: inline" placeholder="say something" type="text" class="form-control" maxlength="15" size="15">
-      <button style="display: inline" (click)="updateStatus(newStatus.value)" class="btn-default">update</button>
+      <input id="newHeadline" #newStatus style="width: auto; display: inline" placeholder="say something" type="text" class="form-control" maxlength="15" size="15">
+      <button id="updateHeadline" style="display: inline" (click)="updateStatus(newStatus.value)" class="btn-default">update</button>
     </div>
   </div>
 </div>

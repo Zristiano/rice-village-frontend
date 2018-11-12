@@ -24,5 +24,14 @@ exports.config = {
       project: require('path').join(__dirname, './tsconfig.e2e.json')
     });
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
+
+    require('jasmine-reporters');
+    const reporters = require('jasmine-reporters');
+    const junitReporter = new reporters.JUnitXmlReporter({
+      savePath: './e2e/',
+      consolidateAll: false
+    });
+    jasmine.getEnv().addReporter(junitReporter);
+
   }
 };

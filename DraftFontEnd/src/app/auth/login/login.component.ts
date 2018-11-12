@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
   }
 
   login(form:NgForm){
-    let promise =  this.loginService.doLogin(form.value.netId,form.value.psw);
+    // this.loginStateSuc = true;
+    let promise =  this.loginService.doLogin(form.value.username,form.value.password);
     return promise.then((data:any)=>{
       if (data.errorCode===0){
         this.loginStateFail = false;
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  logout(){
-    localStorage.clear();
+  logout():Promise<any>{
+    return this.loginService.logout();
   }
 }

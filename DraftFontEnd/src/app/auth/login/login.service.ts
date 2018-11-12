@@ -37,4 +37,15 @@ export class LoginService {
   */
   }
 
+  public logout():Promise<any>{
+    return this.http.put(this.url.Logout,null,{withCredentials:true}).toPromise().then(res=>{
+      return Promise.resolve(res);
+    }).catch(reason => {
+      if (reason.status===401){
+        return Promise.resolve({errorCode:0,message:"success"});
+      }
+      return Promise.resolve({errorCode:1,message:"server error"});
+    });
+  }
+
 }

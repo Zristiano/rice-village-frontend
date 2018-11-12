@@ -43,59 +43,59 @@ describe('PostsComponent', () => {
     postsFixture.detectChanges();
   });
 
-  it('should fetch articles for current logged in user', () => {
-    setTimeout(function () {
-      postsService.getPosts().then((data:any)=>{
-        console.log("data.length->"+data.length);
-        expect(postsComponent.articles.length).toBe(6);
-      })
-    },500);
-  });
 
-  it('should add articles when adding a follower', function () {
-    setTimeout(function () {
-      console.log("2");
-      postsService.getPosts().then((data:any)=>{
-        console.log("22");
-        expect(postsComponent.articles.length).toBe(6);
-        followingComponent.follow("Ozil");
-        postsService.getPosts().then((data:any)=>{
-          expect(postsComponent.articles.length).toBe(8);
-        })
-      })
-    },1000);
-  });
 
-  it('should remove articles when removing a follower', function () {
-   setTimeout(function () {
-     console.log("3");
-     postsService.getPosts().then((data:any)=>{
-       console.log("33");
-       expect(postsComponent.articles.length).toBe(6);
-       followingComponent.unFollow(2);
-       postsService.getPosts().then((data:any)=>{
-         expect(postsComponent.articles.length).toBe(4);
-       })
-     })
-   },2000);
-  });
-
-  it('should filter displayed articles by the search keyword ', function () {
+  it('Create new article and validate article appears in feed', () => {
     setTimeout(function () {
-      console.log("4");
-      postsService.getPosts().then((data:any)=>{
-        console.log("44");
-        postsComponent.search("Zristiano");
-        expect(postsComponent.articles.length).toBe(2);
+      postsComponent.addPost("This is a new post: "+Date.now()).then((result:any)=>{
+
       });
-    },3000);
   });
-
-  it('should updateProfile the search keyword', function () {
-    let keyWord = "hello";
-    postsComponent.search(keyWord);
-    expect(postsComponent.keyWord).toBe(keyWord);
-  });
+  //
+  // it('should add articles when adding a follower', function () {
+  //   setTimeout(function () {
+  //     console.log("2");
+  //     postsService.getPosts().then((data:any)=>{
+  //       console.log("22");
+  //       expect(postsComponent.articles.length).toBe(6);
+  //       followingComponent.follow("Ozil");
+  //       postsService.getPosts().then((data:any)=>{
+  //         expect(postsComponent.articles.length).toBe(8);
+  //       })
+  //     })
+  //   },1000);
+  // });
+  //
+  // it('should remove articles when removing a follower', function () {
+  //  setTimeout(function () {
+  //    console.log("3");
+  //    postsService.getPosts().then((data:any)=>{
+  //      console.log("33");
+  //      expect(postsComponent.articles.length).toBe(6);
+  //      followingComponent.unFollow(2);
+  //      postsService.getPosts().then((data:any)=>{
+  //        expect(postsComponent.articles.length).toBe(4);
+  //      })
+  //    })
+  //  },2000);
+  // });
+  //
+  // it('should filter displayed articles by the search keyword ', function () {
+  //   setTimeout(function () {
+  //     console.log("4");
+  //     postsService.getPosts().then((data:any)=>{
+  //       console.log("44");
+  //       postsComponent.search("Zristiano");
+  //       expect(postsComponent.articles.length).toBe(2);
+  //     });
+  //   },3000);
+  // });
+  //
+  // it('should updateProfile the search keyword', function () {
+  //   let keyWord = "hello";
+  //   postsComponent.search(keyWord);
+  //   expect(postsComponent.keyWord).toBe(keyWord);
+  // });
 
 
 

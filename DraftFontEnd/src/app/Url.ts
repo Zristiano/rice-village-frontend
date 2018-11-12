@@ -13,4 +13,5 @@ export class  Url {
   public Article = this.BaseUrl+"/article";
   public Profile = this.BaseUrl+"/profile";
   public Password = this.BaseUrl+"/password";
+  public Headline = this.BaseUrl+"/headline";
 }

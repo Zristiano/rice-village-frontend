@@ -45,25 +45,23 @@ describe('ProfileService', () => {
   }
   );
 
-  it('should be created', () => {
-    const service: ProfileService = TestBed.get(ProfileService);
-    expect(service).toBeTruthy();
-  });
-
-  it('should fetch the logged in user\'s profile information', function () {
-
-    const service: ProfileService = TestBed.get(ProfileService);
-    let form = <NgForm>{
-      value: {
-        netId: 'yz143',
-        psw: 'yz143yz143'
-      }
-    };
-    component.login(form).then((data: any) => {
-      expect(data.errorCode).toBe(0);
-      expect(service.getProfile().netId).toBe('yz143');
-    });
-
-
-  });
+  // it('should be created', () => {
+  //   const service: ProfileService = TestBed.get(ProfileService);
+  //   expect(service).toBeTruthy();
+  // });
+  //
+  // it('should fetch the logged in user\'s profile information', function () {
+  //
+  //   const service: ProfileService = TestBed.get(ProfileService);
+  //   let form = <NgForm>{
+  //     value: {
+  //       netId: 'yz143',
+  //       psw: 'yz143yz143'
+  //     }
+  //   };
+  //   component.login(form).then((data: any) => {
+  //     expect(data.errorCode).toBe(0);
+  //     expect(service.getProfile().netId).toBe('yz143');
+  //   });
+  // });
 });
