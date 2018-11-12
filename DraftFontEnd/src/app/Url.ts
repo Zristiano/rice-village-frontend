@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
   providedIn: 'root'
 })
 export class  Url {
-  public BaseUrl = "http://localhost:13240";
+  public BaseUrl = "https://ricebookserver-yuanmengzeng.herokuapp.com";
   public Following = this.BaseUrl+"/following";
   public Login = this.BaseUrl+"/login";
   public Logout = this.BaseUrl+"/logout";

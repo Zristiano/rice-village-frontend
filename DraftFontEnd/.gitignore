@@ -35,3 +35,4 @@ testem.log
 # System Files
 
 /junit
+../node_modules/
