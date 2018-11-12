@@ -23,3 +23,6 @@ con: comment can't display well
 link：http://newfront.surge.sh (yc96, 123123)
 pro：good colorful button
 con:cannot post text-only post and no restriction in profile editing form
+
+
+use a slip day
