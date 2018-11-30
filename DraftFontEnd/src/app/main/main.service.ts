@@ -9,9 +9,10 @@ export class MainService {
 
   constructor(private http: HttpClient, private url:Url) { }
 
-  public getUserProfile(callback){
-    this.http.get('http://localhost:13240/profile',{withCredentials:true}).toPromise().then((res:any)=>{
-      callback(res);
+  public getUserState(){
+    this.http.get(this.url.UserState ,{withCredentials:true}).toPromise().then((res:any)=>{
+      localStorage.setItem('userId',res.result.userId);
+      localStorage.setItem('userType',res.result.userType);
     })
   }
 

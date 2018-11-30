@@ -17,14 +17,14 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     const prevUserId = localStorage.getItem("userId");
     if (!prevUserId || prevUserId==null){
-      localStorage.setItem("userId",this.cookieService.get("userId"))
-      localStorage.setItem("userType",this.cookieService.get("userType"));
+      // localStorage.setItem("userId",this.cookieService.get("userId"))
+      // localStorage.setItem("userType",this.cookieService.get("userType"));
+      this.mainService.getUserState();
     }
   }
 
 
   logout(){
     this.mainService.logout();
-    // this.route.navigate(['../'])
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {ProfileService} from './profile.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -13,10 +14,12 @@ export class ProfileComponent implements OnInit {
   public selectedFileName:string;
   public selectedFile:File;
   public showErrorMsg:boolean = false;
+  public  showLinkSuccessMsg:boolean = false;
+  public  linkSuccedJumpSecond : number = 5;
 
   public errorMessage :string = '';
 
-  constructor(private profileService:ProfileService) { }
+  constructor(private profileService:ProfileService, private route:Router) { }
 
   ngOnInit() {
     this.profileService.getProfile().then(result=>{
@@ -82,6 +85,15 @@ export class ProfileComponent implements OnInit {
         this.errorMessage = result.message;
         this.showErrorMsg = true;
         setTimeout(()=>this.showErrorMsg =false,3000);
+      }else {
+        this.showLinkSuccessMsg = true;
+        this.linkSuccedJumpSecond = 5;
+        setInterval(()=>{
+          if (this.linkSuccedJumpSecond===0){
+            this.route.navigate(['../']);
+          }
+          this.linkSuccedJumpSecond --;
+        },1000);
       }
     });
   }

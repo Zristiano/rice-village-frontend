@@ -4,8 +4,8 @@ import {Injectable} from '@angular/core';
   providedIn: 'root'
 })
 export class  Url {
-  public BaseUrl = "http://localhost:5000";
-  // public BaseUrl = "https://ricebookserver-yuanmengzeng.herokuapp.com";
+  // public BaseUrl = "http://localhost:5000";
+  public BaseUrl = "https://ricebookserver-yuanmengzeng.herokuapp.com";
   public Following = this.BaseUrl+"/following";
   public Login = this.BaseUrl+"/login";
   public Logout = this.BaseUrl+"/logout";
@@ -20,5 +20,6 @@ export class  Url {
   public LinkAccount = this.BaseUrl+"/linkaccount";
   public UnlinkFacebook = this.BaseUrl+"/unlinkfacebook";
   public LinkFacebook = this.BaseUrl+"/linkfacebook";
+  public UserState = this.BaseUrl+"/userstate";
 
 }

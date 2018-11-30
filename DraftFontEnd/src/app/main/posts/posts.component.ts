@@ -23,7 +23,6 @@ export class PostsComponent implements OnInit {
   constructor(private postService:PostsService) {}
 
   ngOnInit() {
-    this.curUserId = parseInt(localStorage.getItem("userId"));
     this.postService.setArticlesCallBack((articles)=>{
       this.articles = articles;
       this.initExpandlayout(this.articles.length);
@@ -96,6 +95,9 @@ export class PostsComponent implements OnInit {
   }
 
   public getCurUserId(){
+    if (!this.curUserId){
+      this.curUserId = parseInt(localStorage.getItem('userId'));
+    }
     return this.curUserId;
   }
 

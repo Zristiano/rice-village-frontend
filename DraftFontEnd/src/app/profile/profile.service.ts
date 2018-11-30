@@ -53,12 +53,7 @@ export class ProfileService {
   }
 
   linkAccount(username:string, password:string):Promise<any>{
-    return this.http.put(this.url.LinkAccount,{username:username,password:password},{withCredentials:true}).toPromise().then((result:any)=>{
-      if (result.errorCode===0){
-        this.route.navigate(['../']);
-      }
-      return result;
-    }).catch(reason => {
+    return this.http.put(this.url.LinkAccount,{username:username,password:password},{withCredentials:true}).toPromise().catch(reason => {
       if (reason.status==401){
         this.route.navigate(['../']);
         return Promise.resolve({"errorCode":100,"message":"fail"})
