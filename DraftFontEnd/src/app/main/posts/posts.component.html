@@ -1,16 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <textarea id="postTextArea" #newPost rows="6" cols="50" class="writing-content" placeholder="Your post here"></textarea>
+      <textarea id="postTextArea" #newPost rows="6" cols="50" class="writing-content" placeholder="Your post here" ></textarea>
     </div>
     <div class="col-md-6">
-      <a class="file">Add Image
-        <input type="file">
-      </a>
+      <span class="file">Add Image <input type="file" (change)="onFileSelected($event)"> </span>
+      <span>{{selectedFileName}}</span><br>
       <div>
         <button id="postNewArticle" (click)="addPost(newPost.value)"  class="post btn-default">Post</button>
       </div>
-      <button (click)="newPost.value=''" class="cancel btn-default">Cancel</button>
+      <button (click)="newPost.value=clearPostContent()" class="cancel btn-default">Cancel</button>
     </div>
   </div>
   <div class="row">
@@ -26,21 +25,36 @@
         <div *ngIf="article.image.length!=0" style="text-align: center">
           <img src="{{article.image}}" width="400px" height="200px" >
         </div>
-        <p id="articleContent" class="post-content">
+        <p *ngIf="!showEditArticles[i]" id="articleContent" class="post-content">
           {{article.content}}
         </p>
+        <p *ngIf="showEditArticles[i]">
+          <textarea #editPost rows="6" cols="50" class="writing-content" data-value={{article.content}} ></textarea>
+          <button (click)="updatePost(article.articleId,editPost.value)" class="update-btn">update</button>
+        </p>
+        <p>
         <span id="articleAuthor" style="text-align: left">Author:{{article.author.username}}</span>
         <span style="float: right; font-style: italic">{{article.date}}</span>
         <p style="text-align: center">
-          <button class="post-btn">Edit</button> <button class="post-btn" (click)="showHideComments(i)">comments</button>
+          <button *ngIf="article.author.userId===getCurUserId()" class="post-btn" (click)="showEditArticle(i)">Edit</button>
+          <button class="post-btn" (click)="showHideComments(i)">comments</button>
         </p>
         <div *ngIf="showComments[i]">
           <div *ngFor="let comment of article.comments">
             <div>
               <span style="font-weight: bold; color: #000000; width: 80px; display: inline-block">{{comment.author.username}}: </span>
               <span > {{comment.content}}</span>
+              <button *ngIf="comment.userId===getCurUserId()" class="edit-comment-btn" (click)="editComment(i,comment)">edit</button>
             </div>
           </div>
+          <div *ngIf="showEditComments[i]">
+            <div  style="margin-top: 15px">you are editing the comment: {{edittingComment[i].content}}</div>
+            <textarea #editCommentArea rows="1" cols="25" style="margin-top: 3px" class="edit-comment-area" data-value={{edittingComment[i].content}}> </textarea>
+            <button class="update-comment" (click)="updateComment(editCommentArea.value,i)">update</button>
+            <button class="close-comment" (click)="closeEditComment(i)">close</button>
+          </div>
+          <textarea #commentArea rows="1" cols="40" style="margin-top: 20px" class="writing-content" placeholder="new comment..."></textarea>
+          <button class="update-btn" (click)="commentArea.value = sendComment(article.articleId,commentArea.value)">send</button>
         </div>
       </div>
     </div>

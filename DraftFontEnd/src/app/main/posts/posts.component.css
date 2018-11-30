@@ -90,3 +90,52 @@
   border-radius: 20px;
   width: 200px;
 }
+
+.update-btn{
+  color: white;
+  background-color: #505050;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 20px;
+  width: 80px;
+}
+
+.edit-comment-btn{
+  color: white;
+  background-color: #505050;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-left: 30px;
+  margin-right: 5px;
+  border-radius: 20px;
+  width: 60px;
+}
+
+.edit-comment-area{
+  background-color: #CCCCCC;
+  color: #202020;
+  resize: none;
+  max-lines: 4;
+}
+
+.update-comment{
+  color: white;
+  background-color: #00ADEF;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-left: 10px;
+  margin-right: 5px;
+  border-radius: 20px;
+}
+
+.close-comment{
+  color: black;
+  background-color: #F0F0F0;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-left: 10px;
+  margin-right: 5px;
+  border-radius: 20px;
+}

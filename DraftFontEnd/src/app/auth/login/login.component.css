@@ -17,3 +17,9 @@
   background-color: #202020;
 }
 
+.center{
+  margin-top: 20px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}

@@ -39,6 +39,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  loginWithFacebook(){
+    this.loginService.loginWithFacebook();
+  }
+
   logout():Promise<any>{
     return this.loginService.logout();
   }

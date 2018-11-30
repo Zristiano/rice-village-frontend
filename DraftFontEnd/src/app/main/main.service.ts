@@ -17,6 +17,8 @@ export class MainService {
 
   public logout():Promise<any>{
     return this.http.put(this.url.Logout,null,{withCredentials:true}).toPromise().then(res=>{
+      localStorage.removeItem("userId");
+      localStorage.removeItem("userType");
       return Promise.resolve(res);
     }).catch(reason => {
       if (reason.status===401){

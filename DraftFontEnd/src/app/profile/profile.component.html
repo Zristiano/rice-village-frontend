@@ -4,14 +4,16 @@
   </div>
 
   <div class="row">
-    <div class="col-lg-6">
+    <div *ngIf="profile" class="col-lg-6">
       <div style="text-align: center">
         <p>
           <img src={{profile.avatar}} width="150px">
         </p>
-        <a class="file">Upload new picture
-          <input type="file" >
-        </a>
+        <span class="file">Select new image <input type="file" (change)="onFileSelected($event)"> </span><br>
+        <span>{{selectedFileName}}</span>
+        <div>
+          <button id="postNewArticle" (click)="updataAvator()"  class="upload-image btn-default">upload</button>
+        </div>
       </div>
 
       <div style="border: 2px solid #505050; margin-top: 20px">
@@ -49,22 +51,40 @@
             <p class="alert" *ngIf="zipcode.touched && zipcode.errors && zipcode.value.trim().length!=0"> Zip code must be a number with 5 digit length </p>
           </div>
 
-          <div class="form-group">
-            <label>Password:</label>
-            <input #psw="ngModel" name="psw" type="password" class="form-control" ngModel>
-          </div>
+          <div *ngIf="isNormalUser()">
+            <div  class="form-group">
+              <label>Password:</label>
+              <input #psw="ngModel" name="psw" type="password" class="form-control" ngModel>
+            </div>
 
-          <div *ngIf="psw.touched && psw.value.trim().length!=0" class="form-group">
-            <label>Confirm Password:</label>
-            <input #confirmPassword="ngModel" name="confirmpsw" type="password" class="form-control"  ngModel>
-            <p class="alert" *ngIf="psw.value!=confirmPassword.value && psw.touched && confirmPassword.touched"> password must be the same </p>
+            <div *ngIf="psw.touched && psw.value.trim().length!=0" class="form-group">
+              <label>Confirm Password:</label>
+              <input #confirmPassword="ngModel" name="confirmpsw" type="password" class="form-control"  ngModel>
+              <p class="alert" *ngIf="psw.value!=confirmPassword.value && psw.touched && confirmPassword.touched"> password must be the same </p>
+            </div>
           </div>
-
           <p>
             <button (click)="update(profileForm)" [disabled]="profileForm.form.invalid" class="form-submit">Update Info</button>
           </p>
         </form>
       </div>
+
+      <div *ngIf="!showErrorMsg && isNormalUser() && profile && (!profile.facebookId || profile.facebookId==='')">
+        <button type="button" class="center btn btn-primary btn-lg" (click)="linkFacebook()">Link Facebook</button>
+      </div>
+
+      <div *ngIf="profile && !showErrorMsg && isNormalUser() && profile.facebookId">
+        <button type="button" class="center btn btn-primary btn-lg" (click)="unLinkFacebook()">Unlink Facebook</button>
+      </div>
+
+      <div *ngIf="!showErrorMsg && !isNormalUser()" style="border: 2px solid #505050; margin-top: 20px; padding-left: 10px; padding-right: 10px; padding-bottom: 10px">
+        <input #linkAccountName style="margin-top: 20px" class="form-control" placeholder="username">
+        <input #linkAccountPassword type="password" style="margin-top: 20px" class="form-control" placeholder="password">
+        <button class="form-submit" (click)="linkAccount(linkAccountName.value,linkAccountPassword.value)">Link Account</button>
+      </div>
+
+      <div *ngIf="showErrorMsg">{{errorMessage}}</div>
+
     </div>
   </div>
 </div>

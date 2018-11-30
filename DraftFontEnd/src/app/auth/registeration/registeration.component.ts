@@ -26,10 +26,6 @@ export class RegisterationComponent implements OnInit {
     let birth = new Date(this.birthday).getTime();
     let today = new Date(Date.now()).getTime();
     let d = today-birth;
-    console.log('birthday tt->'+this.birthday);
-    // if (true){
-    //   return false;
-    // }
     return d<567993600000;
   }
 
@@ -56,7 +52,6 @@ export class RegisterationComponent implements OnInit {
         this.isRegisterSuc = true;
         setTimeout(()=>this.isRegisterSuc = false,4000);
       }else {
-        console.log("res====="+ JSON.stringify(res));
         this.registerFailMsg = res.message;
         this.isRegisterFail = true;
         setTimeout(()=>this.isRegisterFail = false,4000);

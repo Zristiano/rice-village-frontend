@@ -14,6 +14,7 @@ import { FollowingComponent } from './main/following/following.component';
 import { HttpClientModule} from '@angular/common/http';
 import { PostsComponent } from './main/posts/posts.component';
 import { ProfileComponent } from './profile/profile.component';
+import {CookieService} from 'ngx-cookie-service';
 
 
 export const routes: Routes = [{path: '', component: AuthComponent, pathMatch: 'full'},
@@ -39,7 +40,7 @@ export const routes: Routes = [{path: '', component: AuthComponent, pathMatch: '
     HttpClientModule
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

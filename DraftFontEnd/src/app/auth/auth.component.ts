@@ -11,7 +11,8 @@ export class AuthComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userType");
   }
 
 }

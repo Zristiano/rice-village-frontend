@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {e} from '@angular/core/src/render3';
 import {Url} from '../../Url';
 import {Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
+import {text} from '@angular/core/src/render3/instructions';
 
 @Injectable({
   providedIn: 'root'
@@ -20,42 +22,26 @@ export class PostsService {
   }
 
   getPosts(followings:Array<any>){
-    console.log("getPosts following->"+followings);
-    const followingNum = followings.length+1;
-    let followingReqCount = 0;
     this.articles = [];
-    for (let i=0; i<followingNum; i++){
-      let userId = "";
-      if (i<followingNum-1){
-        userId = "/"+followings[i].userId;
+    let userIds:string = localStorage.getItem("userId")+",";
+    followings.forEach(following=>{
+      userIds+=following.userId+","
+    });
+
+    userIds = userIds.substring(0,userIds.length-1);
+    this.http.get(this.Url.Articles +"/"+ userIds,{withCredentials:true}).toPromise().then((value:any) => {
+      if (value.errorCode===0){
+        value.result.forEach(article=>{
+          article.date = new Date(article.timeStamp);
+          this.articles.push(article);
+        });
+        this.articleObserver(this.articles);
       }
-      console.log("getPosts i->"+i);
-      this.http.get(this.Url.Articles + userId,{withCredentials:true}).toPromise().then((value:any) => {
-        console.log("value->"+JSON.stringify(value));
-        followingReqCount++;
-        if (value.errorCode===0){
-          value.result.forEach(article=>{
-            this.articles.push(article);
-          });
-          if (followingReqCount===followingNum){
-            this.articles.sort((ele1,ele2)=>{
-              if (!ele1.date){
-                ele1.date = new Date(ele1.timeStamp);
-              }
-              if (!ele2.date) {
-                ele2.date = new Date(ele2.timeStamp);
-              }
-              return ele2.timeStamp-ele1.timeStamp;
-            });
-            this.articleObserver(this.articles);
-          }
-        }
-      }).catch(reason => {
-        if (reason.status==401){
-          this.router.navigate(['../']);
-        }
-      });
-    }
+    }).catch(reason => {
+      if (reason.status==401){
+        this.router.navigate(['../']);
+      }
+    });
   }
 
 
@@ -77,8 +63,11 @@ export class PostsService {
   }
 
 
-  addContent(content):Promise<any>{
-    return this.http.post(this.Url.Article,{text:content},{withCredentials:true}).toPromise().then((result:any)=>{
+  addPost(content, imageFile):Promise<any>{
+    const formData = new FormData();
+    formData.append("image",imageFile);
+    formData.append("text",content);
+    return this.http.post(this.Url.Article,formData,{withCredentials:true}).toPromise().then((result:any)=>{
       if (result.errorCode===0){
         result.result.date = new Date(result.result.timeStamp);
         this.articles.splice(0,0,result.result);
@@ -95,5 +84,40 @@ export class PostsService {
 
   setArticlesCallBack(observer){
     this.articleObserver = observer;
+  }
+
+  updatePost(articleId:number,newContent:string):Promise<any>{
+    const promise = this.http.put(this.Url.Articles+"/"+articleId,{text:newContent},{withCredentials:true}).toPromise();
+    return this.updateCertainArticle(promise);
+  }
+
+  sendComment(articleId:number, content:string){
+    const promise = this.http.put(this.Url.Articles+"/"+articleId,{text:content,commentId:-1},{withCredentials:true}).toPromise();
+    return this.updateCertainArticle(promise);
+  }
+
+  updateComment(articleId:number, commentId:number, newContent:string){
+    const promise = this.http.put(this.Url.Articles+"/"+articleId,{text:newContent,commentId:commentId},{withCredentials:true}).toPromise();
+    return this.updateCertainArticle(promise);
+  }
+
+  private updateCertainArticle(promise:Promise<any>):Promise<any>{
+    return promise.then((result:any)=>{
+      if (result.errorCode===0){
+        result.result[0].date = new Date(result.result[0].timeStamp);
+        for (let i=0; i<this.articles.length; i++){
+          if (this.articles[i].articleId===result.result[0].articleId){
+            this.articles[i] = result.result[0];
+            break;
+          }
+        }
+      }
+      return result;
+    }).catch(reason => {
+      if (reason.status==401){
+        this.router.navigate(['../']);
+      }
+      return Promise.resolve({errorCode:1,message:"fail"});
+    });
   }
 }

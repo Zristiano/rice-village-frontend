@@ -40,4 +40,53 @@ export class ProfileService {
       }
     });
   }
+
+  updateAvatar(imageFile){
+    const formData = new FormData();
+    formData.append("image",imageFile);
+    return this.http.put(this.url.Avatar,formData,{withCredentials:true}).toPromise().catch(reason => {
+      if (reason.status==401){
+        this.route.navigate(['../']);
+      }
+      return Promise.resolve({errorCode:1,message:"fail"});
+    });
+  }
+
+  linkAccount(username:string, password:string):Promise<any>{
+    return this.http.put(this.url.LinkAccount,{username:username,password:password},{withCredentials:true}).toPromise().then((result:any)=>{
+      if (result.errorCode===0){
+        this.route.navigate(['../']);
+      }
+      return result;
+    }).catch(reason => {
+      if (reason.status==401){
+        this.route.navigate(['../']);
+        return Promise.resolve({"errorCode":100,"message":"fail"})
+      }
+    })
+  }
+
+  unlinkFacebook(){
+    return this.http.put(this.url.UnlinkFacebook,{},{withCredentials:true}).toPromise().then((result:any)=>{
+      return result;
+    }).catch(reason => {
+      if (reason.status==401){
+        this.route.navigate(['../']);
+        return Promise.resolve({"errorCode":100,"message":"fail"})
+      }
+    })
+  }
+
+  linkFacebook(){
+    window.location.href = this.url.LinkFacebook;
+    // return this.http.put(this.url.LinkFacebook,{},{withCredentials:true}).toPromise().then((result:any)=>{
+    //   console.log(result);
+    //   return result;
+    // }).catch(reason => {
+    //   if (reason.status==401){
+    //     this.route.navigate(['../']);
+    //     return Promise.resolve({"errorCode":100,"message":"fail"})
+    //   }
+    // })
+  }
 }

@@ -14,9 +14,11 @@
   </div>
 
   <p>
-    <button id="loginSubmit" type="submit" [disabled]="loginForm.form.invalid" class="form-submit">login</button>
+    <button id="loginSubmit" type="submit" [disabled]="loginForm.form.invalid"  class="form-submit">login</button>
   </p>
 </form>
+
+<button *ngIf="!loginStateFail && !loginStateSuc" type="button" class="center btn btn-primary btn-lg" (click)="loginWithFacebook()">Facebook Login</button>
 
 <div id="loginFailMsg" class="alert alert-danger" *ngIf="loginStateFail" >Login Fail: {{errorMsg}}</div>
 <div id="loginSucMsg" class="alert alert-success" *ngIf="loginStateSuc" >Login Succeed</div>

@@ -15,26 +15,9 @@ export class LoginService {
       return Promise.resolve(result);
     }).catch((reason:any)=>{
       let result = {"errorCode":100, "message":"request fail"};
-      console.log("http login catch :"+JSON.stringify(reason));
+      // console.log("http login catch :"+JSON.stringify(reason));
       return Promise.resolve(result);
     });
-
-    /**
-    return this.http.get("assets/profile.json").toPromise().then((users:any) => {
-       for (let i=0; i<users.length; i++){
-         if (users[i].netId===netId ){
-           if (users[i].password===psw) {
-             localStorage.clear();
-             let userString = JSON.stringify(users[i]);
-             localStorage.setItem("curUser",userString);
-             return Promise.resolve({"errorCode":0});
-           }
-           return Promise.resolve({"errorCode":1, "errorMsg":"Incorrect Password"})
-         }
-       }
-       return Promise.resolve({"errorCode":2,"errorMsg":"Non-existent User"});
-    });
-  */
   }
 
   public logout():Promise<any>{
@@ -42,10 +25,17 @@ export class LoginService {
       return Promise.resolve(res);
     }).catch(reason => {
       if (reason.status===401){
+        localStorage.removeItem("userId");
         return Promise.resolve({errorCode:0,message:"success"});
       }
       return Promise.resolve({errorCode:1,message:"server error"});
     });
   }
 
+  public loginWithFacebook(){
+    window.location.href = this.url.FacebookLogin
+    // this.http.get(this.url.FacebookLogin,{withCredentials:true}).toPromise().then((result:any)=>{
+    //   console.log(result);
+    // });
+  }
 }

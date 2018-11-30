@@ -11,7 +11,6 @@ export class FollowingService {
   }
 
   getFollowers():Promise<any>{
-    // console.log("following url->"+this.url.Following);
     return this.http.get(this.url.Following,{withCredentials:true}).toPromise().then((result:any)=>{
       if (result.errorCode==0){
         return Promise.resolve(result);
@@ -42,7 +41,6 @@ export class FollowingService {
       return Promise.resolve(result);
     }).catch(reason => {
       if (reason.status==401){
-        console.log("unFollow catch"+JSON.stringify(reason));
         this.route.navigate(['../']);
         return Promise.resolve({"errorCode":100,"message":"fail"})
       }
