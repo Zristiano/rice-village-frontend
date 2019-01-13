@@ -35,4 +35,10 @@ testem.log
 # System Files
 
 /junit
-../node_modules/
+package-lock.json
+/node_modules
+.idea*
+.gitignore
+../node_modules
+../package-lock.json
+/.idea

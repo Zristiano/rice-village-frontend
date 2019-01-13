@@ -75,7 +75,7 @@ export class ProfileService {
   linkFacebook(){
     window.location.href = this.url.LinkFacebook;
     // return this.http.put(this.url.LinkFacebook,{},{withCredentials:true}).toPromise().then((result:any)=>{
-    //   console.log(result);
+    //   log(result);
     //   return result;
     // }).catch(reason => {
     //   if (reason.status==401){

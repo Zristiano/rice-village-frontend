@@ -52,6 +52,7 @@ export class ProfileComponent implements OnInit {
   onFileSelected(event){
     this.selectedFileName = event.target.files[0].name;
     this.selectedFile = event.target.files[0];
+
   }
 
   updataAvator(){
